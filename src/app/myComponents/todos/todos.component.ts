@@ -9,34 +9,19 @@ import { TodoEntity } from 'src/app/TodoEntity';
 export class TodosComponent implements OnInit {
 
   public todos: TodoEntity[];
+  localItem: any;
   constructor() 
   {
-    this.todos = [
-      {
-        id:1,
-        title:"Title 1",
-        desc:"Description 1",
-        active:true
-      },
-      {
-        id:2,
-        title:"Title 2",
-        desc:"Description 2",
-        active:true
-      },
-      {
-        id:3,
-        title:"Title 3",
-        desc:"Description 3",
-        active:true
-      },
-      {
-        id:4,
-        title:"Title 4",
-        desc:"Description 4",
-        active:true
-      }
-    ]
+    this.localItem = localStorage.getItem("todo.bak");
+    if(this.localItem != null)
+    {
+      this.todos = JSON.parse(this.localItem);
+    }
+    else
+    {
+      this.todos = [];
+    }
+
   }
 
   ngOnInit(): void {
@@ -46,11 +31,12 @@ export class TodosComponent implements OnInit {
   {
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1);
+    localStorage.setItem("todo.bak",JSON.stringify(this.todos));
   }
   todoAdd(todo: TodoEntity): void
   {
     this.todos.push(todo);
-    console.log(todo);
+    localStorage.setItem("todo.bak",JSON.stringify(this.todos));
   }
 
 }
