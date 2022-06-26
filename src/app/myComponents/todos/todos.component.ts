@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoEntity } from 'src/app/TodoEntity';
+import { TodoStorage } from 'src/app/TodoStorage';
 
 @Component({
   selector: 'app-todos',
@@ -8,20 +9,14 @@ import { TodoEntity } from 'src/app/TodoEntity';
 })
 export class TodosComponent implements OnInit {
 
-  public todos: TodoEntity[];
-  localItem: any;
+  todos: TodoEntity[];
+  todoStorage: TodoStorage;
+  items: any;
   constructor() 
   {
-    this.localItem = localStorage.getItem("todo.bak");
-    if(this.localItem != null)
-    {
-      this.todos = JSON.parse(this.localItem);
-    }
-    else
-    {
-      this.todos = [];
-    }
-
+    this.todoStorage = new TodoStorage();
+    this.items = this.todoStorage.GetItem();
+    this.todos = this.items;
   }
 
   ngOnInit(): void {
@@ -31,12 +26,12 @@ export class TodosComponent implements OnInit {
   {
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1);
-    localStorage.setItem("todo.bak",JSON.stringify(this.todos));
+    this.todoStorage.SaveItem(this.todos);
   }
   todoAdd(todo: TodoEntity): void
   {
     this.todos.push(todo);
-    localStorage.setItem("todo.bak",JSON.stringify(this.todos));
+    this.todoStorage.SaveItem(this.todos);
   }
 
 }
