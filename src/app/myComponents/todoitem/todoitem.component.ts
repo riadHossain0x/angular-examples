@@ -9,6 +9,7 @@ import { TodoEntity } from 'src/app/TodoEntity';
 export class TodoitemComponent implements OnInit {
   @Input() todoItem: TodoEntity = new TodoEntity();
   @Output() todoDelete: EventEmitter<TodoEntity> = new EventEmitter();
+  @Output() todoDone: EventEmitter<TodoEntity> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +18,12 @@ export class TodoitemComponent implements OnInit {
   DeleteItem(itemtodo: TodoEntity): void
   {
     this.todoDelete.emit(itemtodo);
+  }
+
+  OnClickBox(itemTodo: TodoEntity): void
+  {
+    this.todoDone.emit(itemTodo);
+    console.log(itemTodo);
   }
 
 }

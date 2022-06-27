@@ -34,4 +34,11 @@ export class TodosComponent implements OnInit {
     this.todoStorage.SaveItem(this.todos);
   }
 
+  todoDone(todo: TodoEntity): void
+  {
+    const index = this.todos.indexOf(todo);
+    this.todos[index].active = !this.todos[index].active;
+    this.todoStorage.SaveItem(this.todos);
+  }
+
 }
