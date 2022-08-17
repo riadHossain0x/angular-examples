@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodoformComponent } from './todoform.component';
+import { FavoriteComponent } from './favorite.component';
 
-describe('TodoformComponent', () => {
-  let component: TodoformComponent;
-  let fixture: ComponentFixture<TodoformComponent>;
+describe('FavoriteComponent', () => {
+  let component: FavoriteComponent;
+  let fixture: ComponentFixture<FavoriteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TodoformComponent ]
+      declarations: [ FavoriteComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TodoformComponent);
+    fixture = TestBed.createComponent(FavoriteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
