@@ -1,23 +1,21 @@
 import { Component } from '@angular/core';
-import { FavoriteItemsService } from './favorite-items.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+      <h4>{{person.Id | number:'1.2-2'}}</h4>
+      <h4>{{person.Name | summary}}</h4>
+      <h4>{{person.Department | uppercase}}</h4>
+      <h4>{{person.BOD | date}}</h4>
+  `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title : "componentapi";
-  image : "default.jpg";
-  
-  constructor(public favorites: FavoriteItemsService){
-    favorites.One = false;
-    favorites.two = false;
-    favorites.three = false;
-    favorites.four = false;
-    favorites.five = false;
-  }
-  favoriteReset(fav: FavoriteItemsService){
-    this.favorites === fav;
-  }
+  title = 'CustomPipe'; 
+  person = {
+    Id: 212010160,
+    Name: "Riad",
+    Department: "cse",
+    BOD: "05/04/1999"
+  };
 }

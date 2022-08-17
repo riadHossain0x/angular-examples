@@ -1,21 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FavoriteItemsService } from './favorite-items.service';
-import { FavoriteComponent } from './favorite/favorite.component';
+import { SummaryPipeService } from './summary-pipe.service';
+import { ValidNumberPipe } from './valid-number.pipe';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerService } from './customer.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FavoriteComponent
+    SummaryPipeService,
+    ValidNumberPipe,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [FavoriteItemsService],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

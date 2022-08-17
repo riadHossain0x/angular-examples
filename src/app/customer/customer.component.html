@@ -1,0 +1,21 @@
+<p>customer list</p>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>Department</th>
+            <th>Batch</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of customer.students;">
+            <td>{{student.id}}</td>
+            <td>{{student.name}</td>
+            <td>{{student.department}}</td>
+            <td>{{student.id}}</td>
+            <td>{{student.id}}</td>
+        </tr>
+    </tbody>
+</table>
